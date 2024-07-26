@@ -92,15 +92,20 @@ for x in range(collums):
         if grid[y][x]==0:
             rooms.append(flood(x,y))
 
-print(sorted(rooms,reverse=True))
 
 doogit = True
 for room,tiles in enumerate(sorted(rooms,reverse=True)):
     if floors-tiles>=0:
         floors-=tiles
     else:
-        print(f'{room} rooms, {floors} square metre(s) left over')
+        if room>1 or room<=0:
+            print(f'{room} rooms, {floors} square metre(s) left over')
+        else:
+            print(f'{room} room, {floors} square metre(s) left over')
         doogit = False
         break
 if doogit:
-    print(f'{len(rooms)} rooms, {floors} square metre(s) left over')
+    if room>1 or room<=0:
+        print(f'{len(rooms)} rooms, {floors} square metre(s) left over')
+    else:
+        print(f'{len(rooms)} room, {floors} square metre(s) left over')
